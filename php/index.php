@@ -7,6 +7,9 @@ spl_autoload_register(function ($class) {
   require __DIR__ . "/src/$class.php";
 });
 
+// Funcao para lidar com erro passando o metodo criado na classe ErrorHandler
+set_exception_handler("ErrorHandler::handleException");
+
 // Informa que a resposta sera um JSON
 header("Content-Type: application/json; charset=UTF-8");
 
