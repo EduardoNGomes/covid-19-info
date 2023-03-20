@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Info-Covid</title>
+  </head>
+  <body>
+    <main>
+      <h1>Dados sobre covid-19</h1>
+      <form>
+        <div>
+          <select name="country" id="country">
+            <option value="">Escolha um pais</option>
+            <option value="Brazil">Brasil</option>
+            <option value="Canada">Canada</option>
+            <option value="Australia">Australia</option>
+          </select>
+          <button type="button" id="search">Pesquisar</button>
+        </div>
+        <button type="button" id="choose">escolha outro pais</button>
+
+        <div>
+          <select name="country2" id="country2" disabled>
+            <option value="">Escolha um pais</option>
+          </select>
+          <button type="button" id="searchDiferentCountries">Pesquisar</button>
+        </div>
+      </form>
+    </main>
+
+    <script src="./js/index.js"></script>
+  </body>
+</html>
