@@ -14,15 +14,21 @@ class CountriesController
   {
     switch ($name2) {
       case null:
-        $response = $this->gateway->getCountryInfo($name);
-        if ($response == false) {
-          $data = array($name, 1);
+        date_default_timezone_set('America/Sao_Paulo');
+        $date = date("d-m-Y");
+        $hours = date('G:i:s');
+
+        $responseGetCountry = $this->gateway->getCountryInfo($name);
+        if ($responseGetCountry == false) {
+          $dataToCreate = array($name, 1, $date, $hours);
           // var_dump($data);
-          $responseCreated = $this->gateway->create($data);
+          $responseCreated = $this->gateway->create($dataToCreate);
           echo json_encode($responseCreated);
         } else {
+          $dateToUpdate = array($date, $hours, $responseGetCountry['access'] + 1, $name);
 
-          echo json_encode($response);
+          $responseToUpdated =  $this->gateway->update($dateToUpdate);
+          echo json_encode($responseToUpdated);
         }
         // $content = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name");
         // echo $content;
