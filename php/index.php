@@ -15,17 +15,24 @@ header("Content-Type: application/json; charset=UTF-8");
 
 // API Access = http://localhost/selecao/php/countries/PaisName
 $parts = explode("/", $_SERVER["REQUEST_URI"]);
+$url = explode("=", $parts[3]);
 
 
-if ($parts[3] != 'countries') {
+if ($url[0] != 'countries') {
   http_response_code(404);
   exit;
 }
-$name = $parts[4];
+
+$allCountriesNames = explode("-", $url[1]);
+$name = $allCountriesNames[0];
+$name2 = $allCountriesNames[1] ?? null;
+
+
+// $name = $url[0];
 
 $database = new Database("localhost", "countries_db", "root", "");
-$database->getConnection();
+$gateway = new CountriesGateway($database);
 
-$controller = new CountriesController();
+$controller = new CountriesController($gateway);
 
-$controller->processRequest($_SERVER["REQUEST_METHOD"], $name);
+$controller->processRequest($_SERVER["REQUEST_METHOD"], $name, $name2);
