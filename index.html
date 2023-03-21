@@ -10,7 +10,8 @@
     <main>
       <h1>Dados sobre covid-19</h1>
       <form>
-        <div>
+        <fieldset>
+          <legend>Obtenha informacoes detalhadas sobre um deste paises</legend>
           <select name="country" id="country">
             <option value="">Escolha um pais</option>
             <option value="Brazil">Brasil</option>
@@ -18,15 +19,20 @@
             <option value="Australia">Australia</option>
           </select>
           <button type="button" id="search">Pesquisar</button>
-        </div>
-        <button type="button" id="choose">escolha outro pais</button>
+        </fieldset>
+      </form>
 
-        <div>
-          <select name="country2" id="country2" disabled>
-            <option value="">Escolha um pais</option>
+      <form>
+        <fieldset>
+          <legend>Compare dados entre paises</legend>
+          <select name="chooseCountry1" id="chooseCountry1" disabled>
+            <option value="">Escolha o primeira Pais</option>
           </select>
-          <button type="button" id="searchDiferentCountries">Pesquisar</button>
-        </div>
+          <select name="chooseCountry2" id="chooseCountry2" disabled>
+            <option value="">Escolha o secondo Pais</option>
+          </select>
+          <button type="button" id="compareCountries">Comparar</button>
+        </fieldset>
       </form>
     </main>
 
@@ -37,6 +43,6 @@
       <p>Pais: <span></span></p>
     </footer>
 
-    <script src="./js/index.js"></script>
+    <script src="./js/index.js" type="module"></script>
   </body>
 </html>

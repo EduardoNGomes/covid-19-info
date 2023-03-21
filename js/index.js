@@ -1,3 +1,12 @@
+import {
+  buttonSearch,
+  buttonCompareCountries,
+  chooseCountry1Field1,
+  chooseCountry1Field2
+} from './elements.js'
+
+import { getAllCountries } from './functions.js'
+
 // localhost:/selecao/php/countries
 
 // 1 pais
@@ -6,34 +15,17 @@
 // 2 paises
 // http localhost:/selecao/php/countries=Angola-Brazil
 
-// * Botao para realizar a primeira pesquisa
-const buttonSearch = document.querySelector('#search')
+getAllCountries(
+  'https://dev.kidopilabs.com.br/exercicio/covid.php?listar_paises=1',
+  chooseCountry1Field1,
+  chooseCountry1Field2
+)
 
-// Chamada para API
+buttonCompareCountries.addEventListener('click', () => {
+  console.log(chooseCountry1Field1.value)
+  console.log(chooseCountry1Field2.value)
+})
+
 buttonSearch.addEventListener('click', () => {
   console.log(document.querySelector('#country').value)
-})
-
-// Botao para
-const choose = document.querySelector('#choose')
-
-choose.addEventListener('click', () => {
-  const selectField = document.querySelector('#country2')
-  selectField.disabled = false
-  fetch('https://dev.kidopilabs.com.br/exercicio/covid.php?listar_paises=1')
-    .then(response => response.json())
-    .then(countries => {
-      for (let country in countries) {
-        let option = document.createElement('option')
-        option.setAttribute('value', countries[country])
-        option.textContent = countries[country]
-        selectField.appendChild(option)
-      }
-    })
-})
-
-const buttonSearch2 = document.querySelector('#searchDiferentCountries')
-
-buttonSearch2.addEventListener('click', () => {
-  console.log(document.querySelector('#country2').value)
 })
