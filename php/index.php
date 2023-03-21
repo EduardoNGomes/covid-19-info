@@ -23,12 +23,15 @@ if ($url[0] != 'countries') {
   exit;
 }
 
-$allCountriesNames = explode("-", $url[1]);
-$name = $allCountriesNames[0];
-$name2 = $allCountriesNames[1] ?? null;
+$name = '';
+$name2 = '';
 
+if (sizeof($url) == 2) {
+  $allCountriesNames = explode("-", $url[1]);
+  $name = $allCountriesNames[0];
+  $name2 = $allCountriesNames[1] ?? null;
+}
 
-// $name = $url[0];
 
 $database = new Database("localhost", "countries_db", "root", "");
 $gateway = new CountriesGateway($database);

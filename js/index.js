@@ -1,5 +1,12 @@
-// * Botao para realizar a primeira pesquisa
+// localhost:/selecao/php/countries
 
+// 1 pais
+// http localhost:/selecao/php/countries=Angola
+
+// 2 paises
+// http localhost:/selecao/php/countries=Angola-Brazil
+
+// * Botao para realizar a primeira pesquisa
 const buttonSearch = document.querySelector('#search')
 
 // Chamada para API

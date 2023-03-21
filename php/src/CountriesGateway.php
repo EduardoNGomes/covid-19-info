@@ -9,6 +9,23 @@ class CountriesGateway
     $this->conn = $database->getConnection();
   }
 
+  public function getLastCountry()
+  {
+    $sql = "SELECT *
+            FROM countries
+            ORDER BY updated_at, hour DESC";
+    $stmt = $this->conn->prepare($sql);
+    $stmt->execute();
+    $data = [];
+
+    while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+
+      $data[] = $row;
+    }
+
+    return $data[0];
+  }
+
   public function getCountryInfo(string $name): bool | array
   {
     $sql = "SELECT *
@@ -21,7 +38,7 @@ class CountriesGateway
     return $data;
   }
 
-  public function create(array $data)
+  public function createCountry(array $data)
   {
     $sql = "INSERT INTO countries (name, access,created_at,updated_at,hour)
             VALUES (:name, :access,:created_at,:updated_at,:hour)";
@@ -37,7 +54,7 @@ class CountriesGateway
     return $this->conn->lastInsertId();
   }
 
-  public function update(array $new)
+  public function updateCountry(array $new)
   {
     $sql = "UPDATE countries 
             SET updated_at = :updated_at, access = :access, hour = :hour

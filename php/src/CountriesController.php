@@ -1,4 +1,5 @@
 <?php
+require_once "/opt/lampp/htdocs/selecao/php/src/utils/calculateInfo.php";
 
 class CountriesController
 {
@@ -10,32 +11,59 @@ class CountriesController
     $this->processResourceRequest($method, $name, $name2);
   }
 
-  private function processResourceRequest(string $method, string $name, string $name2 = null): void
+  private function processResourceRequest(string $method, string | null $name, string | null $name2): void
   {
-    switch ($name2) {
-      case null:
-        date_default_timezone_set('America/Sao_Paulo');
-        $date = date("d-m-Y");
-        $hours = date('G:i:s');
+    if ($name == null) {
+      $responseLastCountry = $this->gateway->getLastCountry();
+      echo json_encode($responseLastCountry);
+    } else {
 
-        $responseGetCountry = $this->gateway->getCountryInfo($name);
-        if ($responseGetCountry == false) {
-          $dataToCreate = array($name, 1, $date, $hours);
-          // var_dump($data);
-          $responseCreated = $this->gateway->create($dataToCreate);
-          echo json_encode($responseCreated);
-        } else {
-          $dateToUpdate = array($date, $hours, $responseGetCountry['access'] + 1, $name);
+      switch ($name2) {
 
-          $responseToUpdated =  $this->gateway->update($dateToUpdate);
-          echo json_encode($responseToUpdated);
-        }
-        // $content = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name");
-        // echo $content;
-        break;
-      default:
-        echo "Temos dois paises";
-        break;
+        case null:
+          $responseFetch = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name");
+          date_default_timezone_set('America/Sao_Paulo');
+          $date = date("d-m-Y");
+          $hours = date('G:i:s');
+
+          $responseGetCountry = $this->gateway->getCountryInfo($name);
+
+          if ($responseGetCountry == false) {
+            $dataToCreate = array($name, 1, $date, $hours);
+            $responseCreated = $this->gateway->createCountry($dataToCreate);
+
+            $responseLastCountry = $this->gateway->getLastCountry();
+
+            $response = array("dbaResponse" => $responseCreated, "data" => $responseFetch, "lastCountry" => $responseLastCountry);
+            echo json_encode($response);
+          } else {
+            $dateToUpdate = array($date, $hours, $responseGetCountry['access'] + 1, $name);
+            $responseUpdated =  $this->gateway->updateCountry($dateToUpdate);
+
+            $responseLastCountry = $this->gateway->getLastCountry();
+
+            $response = array("dbaResponse" => $responseUpdated, "data" => $responseFetch, "lastCountry" => $responseLastCountry);
+            echo json_encode($response);
+          }
+
+          break;
+        default:
+          $responseFetch = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name");
+          $responseFetch2 = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name2");
+
+
+          $responseFirstCountry = json_decode($responseFetch, true);
+          $responseSecondCountry = json_decode($responseFetch2, true);
+
+
+          $response = calculateInfo($responseFirstCountry, $responseSecondCountry);
+
+          echo json_encode($response);
+
+
+          // print_r($dec);
+          break;
+      }
     }
   }
 }
