@@ -1,7 +1,27 @@
-export function getInfoCountry(url) {
+export function getInfoCountry(url, searchResponseElement) {
   fetch(url)
     .then(data => data.json())
-    .then(data => console.log(data))
+    .then(data => {
+      let allDataOfCountry = JSON.parse(data.data)
+
+      let numberDeath = 0
+      let numberConfirmed = 0
+
+      for (let index in allDataOfCountry) {
+        numberDeath += allDataOfCountry[index].Mortos
+        numberConfirmed += allDataOfCountry[index].Confirmados
+      }
+      for (let index in allDataOfCountry) {
+        const div = document.createElement(`div`)
+        div.innerHTML = `
+            <p>Estado: <span>${allDataOfCountry[index].ProvinciaEstado}</span></p>
+            <p>Pais: <span>${allDataOfCountry[index].Pais}</span></p>
+            <p>Numero de casos confirmados no estado: <span>${allDataOfCountry[index].Confirmados}</span></p>
+            <p>Numero de pessoas que vieram a obito no estado: <span>${allDataOfCountry[index].Mortos}</span></p>
+        `
+        searchResponseElement.appendChild(div)
+      }
+    })
 }
 
 export function getAllCountries(

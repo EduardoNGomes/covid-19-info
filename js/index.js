@@ -1,6 +1,7 @@
 import {
   buttonSearch,
   countryToSearch,
+  searchResponse,
   buttonCompareCountries,
   chooseCountry1Field1,
   chooseCountry1Field2,
@@ -39,7 +40,8 @@ import {
 
 buttonSearch.addEventListener('click', () => {
   getInfoCountry(
-    `http://localhost:/selecao/php/countries=${countryToSearch.value}`
+    `http://localhost:/selecao/php/countries=${countryToSearch.value}`,
+    searchResponse
   )
 })
 
