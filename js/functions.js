@@ -1,3 +1,9 @@
+export function getInfoCountry(url) {
+  fetch(url)
+    .then(data => data.json())
+    .then(data => console.log(data))
+}
+
 export function getAllCountries(
   url,
   chooseCountry1Field1,
@@ -24,7 +30,25 @@ export function getAllCountries(
 }
 
 export function compareCountries(url) {
-  fetch(url)
-    .then(response => response.json())
-    .then(data => console.log(data))
+  try {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => console.log(data))
+  } catch (error) {
+    console.log(error)
+  }
+}
+
+export function updateFooterInf(url, hourElement, dateElement, countryElement) {
+  try {
+    fetch(url)
+      .then(response => response.json())
+      .then(data => {
+        hourElement.innerHTML = data.hour
+        dateElement.innerHTML = data.updated_at
+        countryElement.innerHTML = data.name
+      })
+  } catch (error) {
+    console.log(error)
+  }
 }

@@ -12,7 +12,7 @@
       <form>
         <fieldset>
           <legend>Obtenha informacoes detalhadas sobre um deste paises</legend>
-          <select name="country" id="country">
+          <select name="countryToSearch" id="countryToSearch">
             <option value="">Escolha um pais</option>
             <option value="Brazil">Brasil</option>
             <option value="Canada">Canada</option>
@@ -38,9 +38,9 @@
 
     <footer>
       <h4>Ultimo pais pesquisado</h4>
-      <p>hora: <span></span></p>
-      <p>data: <span></span></p>
-      <p>Pais: <span></span></p>
+      <p>hora: <span id="#footer-hours"></span></p>
+      <p>data: <span id="#footerDate"></span></p>
+      <p>Pais: <span id="#footerCountry"></span></p>
     </footer>
 
     <script src="./js/index.js" type="module"></script>
