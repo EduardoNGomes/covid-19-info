@@ -5,7 +5,7 @@ import {
   chooseCountry1Field2
 } from './elements.js'
 
-import { getAllCountries } from './functions.js'
+import { getAllCountries, compareCountries } from './functions.js'
 
 // localhost:/selecao/php/countries
 
@@ -22,10 +22,9 @@ getAllCountries(
 )
 
 buttonCompareCountries.addEventListener('click', () => {
-  console.log(chooseCountry1Field1.value)
-  console.log(chooseCountry1Field2.value)
+  compareCountries(
+    `http://localhost:/selecao/php/countries=${chooseCountry1Field1.value}-${chooseCountry1Field2.value}`
+  )
 })
 
-buttonSearch.addEventListener('click', () => {
-  console.log(document.querySelector('#country').value)
-})
+buttonSearch.addEventListener('click', () => {})

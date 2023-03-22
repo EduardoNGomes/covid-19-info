@@ -22,3 +22,9 @@ export function getAllCountries(
     console.log(error)
   }
 }
+
+export function compareCountries(url) {
+  fetch(url)
+    .then(response => response.json())
+    .then(data => console.log(data))
+}
