@@ -31,10 +31,13 @@ getAllCountries(
 )
 
 buttonSearch.addEventListener('click', () => {
-  buttonSearch.disabled = true
   if (searchResponse.value !== '') {
     searchResponse.innerHTML = ''
   }
+  if (countryToSearch.value === '') {
+    return alert('Por favor escolha um pais')
+  }
+  buttonSearch.disabled = true
   getInfoCountry(
     `http://localhost:/selecao/php/countries=${countryToSearch.value}`,
     searchResponse,
@@ -49,6 +52,9 @@ buttonCompareCountries.addEventListener('click', () => {
   if (chooseCountry1Field1.value == '' || chooseCountry1Field2.value == '') {
     alert('Por favor verifique se ambos os paises estao selecionados')
   } else {
+    if (searchResponse.value !== '') {
+      searchResponse.innerHTML = ''
+    }
     buttonCompareCountries.disabled = true
     compareCountries(
       `http://localhost:/selecao/php/countries=${chooseCountry1Field1.value}-${chooseCountry1Field2.value}`,

@@ -2,16 +2,28 @@
 <html lang="pt-br">
   <head>
     <meta charset="UTF-8" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Info-Covid</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="./styles/style.css" />
   </head>
-  <body>
+  <body class="loading">
+    <h1>Dados sobre covid-19</h1>
+    <img
+      src="./assets/images/virus-svgrepo-com.svg"
+      alt="virus image"
+      class="image"
+    />
     <main>
-      <h1>Dados sobre covid-19</h1>
       <form>
         <fieldset>
-          <legend>Obtenha informacoes detalhadas sobre um deste paises</legend>
+          <h2>Escolha um pais para saber mais...</h2>
           <select name="countryToSearch" id="countryToSearch">
             <option value="">Escolha um pais</option>
             <option value="Brazil">Brasil</option>
@@ -21,10 +33,9 @@
           <button type="button" id="search">Pesquisar</button>
         </fieldset>
       </form>
-
       <form>
         <fieldset>
-          <legend>Compare dados entre paises</legend>
+          <h2>Compare dados entre paises</h2>
           <select name="chooseCountry1" id="chooseCountry1" disabled>
             <option value="">Escolha o primeira Pais</option>
           </select>
@@ -35,27 +46,16 @@
         </fieldset>
       </form>
     </main>
-    <section id="searchResponse">
-      <!-- <div>
-        <p>Pais</p>
-        <p>Numero de confirmados com covid-19:</p>
-        <p>Numero de obitos devido ao covid-19:</p>
-        <p>Taxa de mortalidade:</p>
-      </div>
-      <div>
-        <p>Pais</p>
-        <p>Numero de confirmados com covid-19: <span></span></p>
-        <p>Numero de obitos devido ao covid-19: <span></span></p>
-        <p>Taxa de mortalidade: <span></span></p>
-      </div>
-      <h5>Diferenca entre a taxa de mortalidade: <span></span></h5> -->
-    </section>
+
+    <section id="searchResponse"></section>
 
     <footer>
       <h4>Ultimo pais pesquisado</h4>
-      <p>hora: <span id="footer-hours"></span></p>
-      <p>data: <span id="footerDate"></span></p>
-      <p>Pais: <span id="footerCountry"></span></p>
+      <div>
+        <p>hora: <span id="footer-hours"></span></p>
+        <p>data: <span id="footerDate"></span></p>
+        <p>Pais: <span id="footerCountry"></span></p>
+      </div>
     </footer>
 
     <script src="./js/index.js" type="module"></script>

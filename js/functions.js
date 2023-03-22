@@ -32,7 +32,8 @@ export function getInfoCountry(
         searchResponseElement.appendChild(numberConfirmedText)
 
         for (let index in allDataOfCountry) {
-          const div = document.createElement(`div`)
+          const div = document.createElement('div')
+          div.classList.add('infoCard')
           div.innerHTML = `
             <p>Estado: <span>${allDataOfCountry[index].ProvinciaEstado}</span></p>
             <p>Pais: <span>${allDataOfCountry[index].Pais}</span></p>
@@ -89,9 +90,12 @@ export function compareCountries(
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        const div = document.createElement(`div`)
-        div.innerHTML = `
-          <div>
+        searchResponseElement.innerHTML = `
+        <h4>Paises escolhidos: <span>${fistCountry} X ${secondCountry}</span> </h4>
+        <h4>Diferenca entre a taxa de mortalidade: <span>${(
+          data.percentageDeathFistCountry - data.percentageDeathSecondCountry
+        ).toFixed(2)}%</span></h4>
+          <div class="infoCard">
             <p>Pais: <span>${fistCountry}</span></p>
             <p>Numero de confirmados com covid-19: <span>${
               data.confirmedFistCountry
@@ -101,9 +105,9 @@ export function compareCountries(
             }</span></p>
             <p>Taxa de mortalidade: <span>${data.percentageDeathFistCountry.toFixed(
               2
-            )}</span></p>
+            )}%</span></p>
           </div>
-          <div>
+          <div class="infoCard">
             <p>Pais: <span>${secondCountry}</span></p>
             <p>Numero de confirmados com covid-19: <span>${
               data.confirmedSecondCountry
@@ -113,13 +117,10 @@ export function compareCountries(
             }</span></p>
             <p>Taxa de mortalidade: <span>${data.percentageDeathSecondCountry.toFixed(
               2
-            )}</span></p>
+            )}%</span></p>
           </div>
-          <h5>Diferenca entre a taxa de mortalidade: <span>${(
-            data.percentageDeathFistCountry - data.percentageDeathSecondCountry
-          ).toFixed(2)}</span></h5>
+
       `
-        searchResponseElement.appendChild(div)
         buttonCompareCountries.disabled = false
       })
   } catch (error) {
