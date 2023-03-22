@@ -13,7 +13,7 @@ class CountriesGateway
   {
     $sql = "SELECT *
             FROM countries
-            ORDER BY updated_at, hour DESC";
+            ORDER BY updated_at DESC, hour DESC";
     $stmt = $this->conn->prepare($sql);
     $stmt->execute();
     $data = [];

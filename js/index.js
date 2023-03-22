@@ -17,31 +17,31 @@ import {
   getInfoCountry
 } from './functions.js'
 
-// localhost:/selecao/php/countries
+updateFooterInf(
+  `http://localhost:/selecao/php/countries`,
+  footerHours,
+  footerDate,
+  footerCountry
+)
 
-// 1 pais
-// http localhost:/selecao/php/countries=Angola
-
-// 2 paises
-// http localhost:/selecao/php/countries=Angola-Brazil
-
-// updateFooterInf(
-//   `http://localhost:/selecao/php/countries`,
-//   footerHours,
-//   footerDate,
-//   footerCountry
-// )
-
-// getAllCountries(
-//   'https://dev.kidopilabs.com.br/exercicio/covid.php?listar_paises=1',
-//   chooseCountry1Field1,
-//   chooseCountry1Field2
-// )
+getAllCountries(
+  'https://dev.kidopilabs.com.br/exercicio/covid.php?listar_paises=1',
+  chooseCountry1Field1,
+  chooseCountry1Field2
+)
 
 buttonSearch.addEventListener('click', () => {
+  buttonSearch.disabled = true
+  if (searchResponse.value !== '') {
+    searchResponse.innerHTML = ''
+  }
   getInfoCountry(
     `http://localhost:/selecao/php/countries=${countryToSearch.value}`,
-    searchResponse
+    searchResponse,
+    footerHours,
+    footerDate,
+    footerCountry,
+    buttonSearch
   )
 })
 
@@ -49,8 +49,13 @@ buttonCompareCountries.addEventListener('click', () => {
   if (chooseCountry1Field1.value == '' || chooseCountry1Field2.value == '') {
     alert('Por favor verifique se ambos os paises estao selecionados')
   } else {
+    buttonCompareCountries.disabled = true
     compareCountries(
-      `http://localhost:/selecao/php/countries=${chooseCountry1Field1.value}-${chooseCountry1Field2.value}`
+      `http://localhost:/selecao/php/countries=${chooseCountry1Field1.value}-${chooseCountry1Field2.value}`,
+      buttonCompareCountries,
+      searchResponse,
+      chooseCountry1Field1.value,
+      chooseCountry1Field2.value
     )
   }
 })

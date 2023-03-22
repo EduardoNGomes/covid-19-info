@@ -1,27 +1,56 @@
-export function getInfoCountry(url, searchResponseElement) {
-  fetch(url)
-    .then(data => data.json())
-    .then(data => {
-      let allDataOfCountry = JSON.parse(data.data)
+export function getInfoCountry(
+  url,
+  searchResponseElement,
+  footerHourElement,
+  footerDateElement,
+  footerCountryElement,
+  buttonSearch
+) {
+  try {
+    fetch(url)
+      .then(data => data.json())
+      .then(data => {
+        let allDataOfCountry = JSON.parse(data.data)
 
-      let numberDeath = 0
-      let numberConfirmed = 0
+        let numberDeath = 0
+        let numberConfirmed = 0
 
-      for (let index in allDataOfCountry) {
-        numberDeath += allDataOfCountry[index].Mortos
-        numberConfirmed += allDataOfCountry[index].Confirmados
-      }
-      for (let index in allDataOfCountry) {
-        const div = document.createElement(`div`)
-        div.innerHTML = `
+        for (let index in allDataOfCountry) {
+          numberDeath += allDataOfCountry[index].Mortos
+          numberConfirmed += allDataOfCountry[index].Confirmados
+        }
+        const numberConfirmedText = document.createElement(`h4`)
+        numberConfirmedText.innerHTML = `
+        Numero de total de confirmados <span>${numberConfirmed}</span>
+        `
+
+        const numberDeathText = document.createElement(`h4`)
+        numberDeathText.innerHTML = `
+        Numero de total de falecidos: <span>${numberDeath}</span>
+        `
+        searchResponseElement.appendChild(numberDeathText)
+        searchResponseElement.appendChild(numberConfirmedText)
+
+        for (let index in allDataOfCountry) {
+          const div = document.createElement(`div`)
+          div.innerHTML = `
             <p>Estado: <span>${allDataOfCountry[index].ProvinciaEstado}</span></p>
             <p>Pais: <span>${allDataOfCountry[index].Pais}</span></p>
             <p>Numero de casos confirmados no estado: <span>${allDataOfCountry[index].Confirmados}</span></p>
             <p>Numero de pessoas que vieram a obito no estado: <span>${allDataOfCountry[index].Mortos}</span></p>
         `
-        searchResponseElement.appendChild(div)
-      }
-    })
+          searchResponseElement.appendChild(div)
+        }
+
+        footerHourElement.innerHTML = data.lastCountry.hour
+        footerDateElement.innerHTML = data.lastCountry.updated_at
+        footerCountryElement.innerHTML = data.lastCountry.name
+
+        buttonSearch.disabled = false
+      })
+  } catch (error) {
+    console.log(error)
+  }
 }
 
 export function getAllCountries(
@@ -49,11 +78,50 @@ export function getAllCountries(
   }
 }
 
-export function compareCountries(url) {
+export function compareCountries(
+  url,
+  buttonCompareCountries,
+  searchResponseElement,
+  fistCountry,
+  secondCountry
+) {
   try {
     fetch(url)
       .then(response => response.json())
-      .then(data => console.log(data))
+      .then(data => {
+        const div = document.createElement(`div`)
+        div.innerHTML = `
+          <div>
+            <p>Pais: <span>${fistCountry}</span></p>
+            <p>Numero de confirmados com covid-19: <span>${
+              data.confirmedFistCountry
+            }</span></p>
+            <p>Numero de obitos devido ao covid-19: <span>${
+              data.deadFistCountry
+            }</span></p>
+            <p>Taxa de mortalidade: <span>${data.percentageDeathFistCountry.toFixed(
+              2
+            )}</span></p>
+          </div>
+          <div>
+            <p>Pais: <span>${secondCountry}</span></p>
+            <p>Numero de confirmados com covid-19: <span>${
+              data.confirmedSecondCountry
+            }</span></p>
+            <p>Numero de obitos devido ao covid-19: <span>${
+              data.deadSecondCountry
+            }</span></p>
+            <p>Taxa de mortalidade: <span>${data.percentageDeathSecondCountry.toFixed(
+              2
+            )}</span></p>
+          </div>
+          <h5>Diferenca entre a taxa de mortalidade: <span>${(
+            data.percentageDeathFistCountry - data.percentageDeathSecondCountry
+          ).toFixed(2)}</span></h5>
+      `
+        searchResponseElement.appendChild(div)
+        buttonCompareCountries.disabled = false
+      })
   } catch (error) {
     console.log(error)
   }
