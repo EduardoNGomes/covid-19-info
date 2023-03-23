@@ -22,6 +22,7 @@ As seguintes tecnologias foram utilizadas para desenvolver este site | The follo
 
 - [HTML](https://developer.mozilla.org/pt-BR/docs/Web/HTML)
 - [CSS](https://www.css3.com/)
+- [JS](https://developer.mozilla.org/pt-BR/docs/Web/JavaScript)
 - [PHP](https://www.php.net/)
 
 ### Como utilizar | How to use
@@ -29,6 +30,7 @@ As seguintes tecnologias foram utilizadas para desenvolver este site | The follo
 1. Instalar e configurar o XAMPP em seu computador, tutorial em [WINDOWS](https://www.youtube.com/watch?v=0Y9OZ0vc1SU&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=12) | [MAC OS](https://www.youtube.com/watch?v=bUqOgDrcsm4&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=14) | [LINUX](https://www.youtube.com/watch?v=aUN0j5Q9quQ&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=13)
 2. Dentro da pasta htdocs criar uma pasta com o nome de <strong>selecao</strong>
 3. Dentro da pasta <strong>selecao</strong> fazer o clone deste projeto
+
 
 ### Author
 
