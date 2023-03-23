@@ -1,6 +1,6 @@
 # Covid-Information-App
 
-# Deploy Project
+### Deploy Project
 - [Covid-Information-App](https://projeto-covid-selecao.000webhostapp.com/index.html)
  <h1 align="center">
   <img alt="Covid-Information-App" src="https://i.imgur.com/4wer0dr.png" />
@@ -26,7 +26,7 @@ As seguintes tecnologias foram utilizadas para desenvolver este site | The follo
 
 ### Como utilizar | How to use
 
-1.Primeiro
+1. Instalar o xampp em seu computador, tutorial em [WINDOWS](https://www.youtube.com/watch?v=0Y9OZ0vc1SU&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=12) | [MAC OS](https://www.youtube.com/watch?v=bUqOgDrcsm4&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=14) | [LINUX](https://www.youtube.com/watch?v=aUN0j5Q9quQ&list=PLHz_AreHm4dlFPrCXCmd5g92860x_Pbr_&index=13)
 
 ### Author
 
