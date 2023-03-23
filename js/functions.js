@@ -137,13 +137,9 @@ export function updateFooterInf(url, hourElement, dateElement, countryElement) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        if (typeof data !== 'object') {
-          return console.log('nenhuma requisicao feita ainda')
-        } else {
-          hourElement.innerHTML = data.hour
-          dateElement.innerHTML = data.updated_at
-          countryElement.innerHTML = data.name
-        }
+        hourElement.innerHTML = data.hour
+        dateElement.innerHTML = data.updated_at
+        countryElement.innerHTML = data.name
       })
   } catch (error) {
     console.log(error)

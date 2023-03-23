@@ -17,13 +17,16 @@ class CountriesGateway
     $stmt = $this->conn->prepare($sql);
     $stmt->execute();
     $data = [];
-
+    $emptyArr = array("updated_at" => "-", "hour" => "-", "name" => "-");
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
 
       $data[] = $row;
     }
-
-    return $data[0];
+    if (sizeof($data) > 0) {
+      return $data[0];
+    } else {
+      return $emptyArr;
+    }
   }
 
   public function getCountryInfo(string $name): bool | array
