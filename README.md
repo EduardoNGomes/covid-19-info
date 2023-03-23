@@ -31,7 +31,7 @@ As seguintes tecnologias foram utilizadas para desenvolver este site | The follo
 2. Dentro da pasta htdocs criar uma pasta com o nome de <strong>selecao</strong>
 3. Dentro da pasta <strong>selecao</strong> fazer o clone deste projeto
 4. Criar novo banco de dados no phpMyAdmin 
-5. Dentro desse banco de dados criar uma tabela com esta query:``` SQL CREATE TABLE `NOME_DO_SEU_BANCO`.`countries` (`name` TEXT NOT NULL , `id` INT NOT NULL AUTO_INCREMENT , `created_at` TEXT NOT NULL , `updated_at` TEXT NOT NULL , `hour` TEXT NOT NULL , `access` INT NOT NULL , PRIMARY KEY (`id`), UNIQUE (`name`)) ENGINE = InnoDB;```
+5. Dentro desse banco de dados criar uma tabela com esta query:``` SQL CREATE TABLE `NOME_DO_SEU_BANCO`.`countries` (`name` TEXT NOT NULL , `id` INT NOT NULL AUTO_INCREMENT , `created_at` TEXT NOT NULL , `updated_at` TEXT NOT NULL , `hour` TEXT NOT NULL , `access` INT NOT NULL , PRIMARY KEY (`id`), UNIQUE (`name`)) ENGINE = InnoDB AUTO_INCREMENT =1;```
 6. Dentro do arquivo `index.php` na inicializacao do DB e necessario passar suas informacoes por parametro da seguinte maneira,```
  (Nome do host, nome do banco, username, password) ``` 
 - nome do host = localhost 
