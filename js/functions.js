@@ -137,7 +137,6 @@ export function updateFooterInf(url, hourElement, dateElement, countryElement) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
-        console.log(data)
         hourElement.innerHTML = data.hour
         dateElement.innerHTML = data.updated_at
         countryElement.innerHTML = data.name
