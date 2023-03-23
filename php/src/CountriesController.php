@@ -1,5 +1,5 @@
 <?php
-require_once "/opt/lampp/htdocs/selecao/php/src/utils/calculateInfo.php";
+require __DIR__  . "/utils/calculateInfo.php";
 
 class CountriesController
 {
