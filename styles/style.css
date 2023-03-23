@@ -23,28 +23,23 @@ body {
   display: flex;
   align-items: center;
   flex-direction: column;
-  background: linear-gradient(
-    var(--collor-black-700),
-    var(--collor-blue-200),
-    var(--collor-blue-500)
-  );
+  background: linear-gradient(var(--collor-black-700), var(--collor-blue-200));
   background-repeat: no-repeat;
-
-  transition: all 0.3s ease-in-out;
 }
 
-/* .loading::before {
+.loading::before {
   content: '';
   width: 100%;
   height: 100vh;
   position: absolute;
   top: 0;
   left: 0;
-  background: rgba(0, 0, 0, 0.9);
+  background: rgba(0, 0, 0, 0.3);
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
-} */
+  cursor: wait;
+}
 
 h1 {
   padding: 50px 0 20px;
@@ -78,11 +73,12 @@ form:last-child {
 }
 
 fieldset {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
 
   padding: 10px;
@@ -115,9 +111,17 @@ fieldset button {
   text-transform: uppercase;
   text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
   margin-bottom: 10px;
+  background: var(--collor-blue-200);
+  color: white;
+  border: 1px solid var(--collor-black-500);
+  transition: all 0.3s ease-in-out;
+}
+fieldset button:hover {
+  color: var(--collor-black-900);
+  filter: brightness(120%);
 }
 fieldset button:disabled {
-  cursor: not-allowed;
+  cursor: wait;
 }
 
 section {
@@ -148,16 +152,14 @@ section h4 span {
 .infoCard {
   width: 325px;
   max-width: 325px;
-  padding: 10px;
+  padding: 15px 30px;
 
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: none;
-  background-color: rgba(255, 255, 255, 0.3);
+  background-color: rgba(255, 255, 255, 0.5);
   box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.2);
-
-  padding: 10px;
 
   border-radius: 8px;
 }
@@ -213,6 +215,12 @@ footer p span {
   section {
     display: grid;
     grid-template-columns: 1fr 1fr;
+    justify-content: space-around;
+  }
+  #search {
+    margin-top: 35px;
+  }
+  footer div {
     justify-content: space-around;
   }
 }

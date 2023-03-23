@@ -1,4 +1,5 @@
 import {
+  body,
   buttonSearch,
   countryToSearch,
   searchResponse,
@@ -38,13 +39,15 @@ buttonSearch.addEventListener('click', () => {
     return alert('Por favor escolha um pais')
   }
   buttonSearch.disabled = true
+  body.classList.add('loading')
   getInfoCountry(
     `http://localhost:/selecao/php/countries=${countryToSearch.value}`,
     searchResponse,
     footerHours,
     footerDate,
     footerCountry,
-    buttonSearch
+    buttonSearch,
+    body
   )
 })
 
@@ -56,12 +59,14 @@ buttonCompareCountries.addEventListener('click', () => {
       searchResponse.innerHTML = ''
     }
     buttonCompareCountries.disabled = true
+    body.classList.add('loading')
     compareCountries(
       `http://localhost:/selecao/php/countries=${chooseCountry1Field1.value}-${chooseCountry1Field2.value}`,
       buttonCompareCountries,
       searchResponse,
       chooseCountry1Field1.value,
-      chooseCountry1Field2.value
+      chooseCountry1Field2.value,
+      body
     )
   }
 })

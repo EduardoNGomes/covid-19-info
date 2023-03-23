@@ -1,3 +1,4 @@
+export const body = document.querySelector('body')
 export const buttonSearch = document.querySelector('#search')
 export const countryToSearch = document.querySelector('#countryToSearch')
 export const searchResponse = document.querySelector('#searchResponse')

@@ -22,6 +22,7 @@ class CountriesController
 
         case null:
           $responseFetch = file_get_contents("https://dev.kidopilabs.com.br/exercicio/covid.php?pais=$name");
+
           date_default_timezone_set('America/Sao_Paulo');
           $date = date("d-m-Y");
           $hours = date('G:i:s');
@@ -61,7 +62,6 @@ class CountriesController
           echo json_encode($response);
 
 
-          // print_r($dec);
           break;
       }
     }

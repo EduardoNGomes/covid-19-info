@@ -9,6 +9,8 @@ spl_autoload_register(function ($class) {
 
 // Funcao para lidar com erro passando o metodo criado na classe ErrorHandler
 set_exception_handler("ErrorHandler::handleException");
+set_exception_handler("ErrorHandler::handleException");
+
 
 // Informa que a resposta sera um JSON
 header("Content-Type: application/json; charset=UTF-8");
@@ -32,7 +34,7 @@ if (sizeof($url) == 2) {
   $name2 = $allCountriesNames[1] ?? null;
 }
 
-
+// Inicializar conexao com o bando de dados passando os seguintes parametros respectivamente - (Nome do host, nome do banco, username, password)
 $database = new Database("localhost", "countries_db", "root", "");
 $gateway = new CountriesGateway($database);
 

@@ -4,7 +4,8 @@ export function getInfoCountry(
   footerHourElement,
   footerDateElement,
   footerCountryElement,
-  buttonSearch
+  buttonSearch,
+  bodyElement
 ) {
   try {
     fetch(url)
@@ -48,6 +49,7 @@ export function getInfoCountry(
         footerCountryElement.innerHTML = data.lastCountry.name
 
         buttonSearch.disabled = false
+        bodyElement.classList.remove('loading')
       })
   } catch (error) {
     console.log(error)
@@ -84,7 +86,8 @@ export function compareCountries(
   buttonCompareCountries,
   searchResponseElement,
   fistCountry,
-  secondCountry
+  secondCountry,
+  bodyElement
 ) {
   try {
     fetch(url)
@@ -122,6 +125,7 @@ export function compareCountries(
 
       `
         buttonCompareCountries.disabled = false
+        bodyElement.classList.remove('loading')
       })
   } catch (error) {
     console.log(error)
@@ -133,6 +137,7 @@ export function updateFooterInf(url, hourElement, dateElement, countryElement) {
     fetch(url)
       .then(response => response.json())
       .then(data => {
+        console.log(data)
         hourElement.innerHTML = data.hour
         dateElement.innerHTML = data.updated_at
         countryElement.innerHTML = data.name
