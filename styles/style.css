@@ -148,6 +148,7 @@ section h4 {
 section h4 span {
   font-size: 1.6rem;
   font-weight: 700;
+  text-shadow: 1px 1px 1px rgba(255, 255, 255, 0.2);
 }
 .infoCard {
   width: 325px;
