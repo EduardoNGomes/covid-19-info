@@ -1,9 +1,9 @@
 # Covid-Information-App
 
 ### Deploy Project
-- [Covid-Information-App](https://i.imgur.com/Zt20bxj.jpg)
+- [Covid-Information-App](https://projeto-covid-selecao.000webhostapp.com/index.html)
  <h1 align="center">
-  <img alt="Covid-Information-App" src="https://i.imgur.com/4wer0dr.png" />
+  <img alt="Covid-Information-App" src="https://i.imgur.com/Zt20bxj.jpg" />
 </h1>
 
 ## Descricao do projeto | Project description
