@@ -22,12 +22,12 @@ export function getInfoCountry(
         }
         const numberConfirmedText = document.createElement(`h4`)
         numberConfirmedText.innerHTML = `
-        Numero de total de confirmados <span>${numberConfirmed}</span>
+        Número total de confirmados <span>${numberConfirmed}</span>
         `
 
         const numberDeathText = document.createElement(`h4`)
         numberDeathText.innerHTML = `
-        Numero de total de falecidos: <span>${numberDeath}</span>
+        Número total de falecidos: <span>${numberDeath}</span>
         `
         searchResponseElement.appendChild(numberDeathText)
         searchResponseElement.appendChild(numberConfirmedText)
@@ -37,9 +37,9 @@ export function getInfoCountry(
           div.classList.add('infoCard')
           div.innerHTML = `
             <p>Estado: <span>${allDataOfCountry[index].ProvinciaEstado}</span></p>
-            <p>Pais: <span>${allDataOfCountry[index].Pais}</span></p>
-            <p>Numero de casos confirmados no estado: <span>${allDataOfCountry[index].Confirmados}</span></p>
-            <p>Numero de pessoas que vieram a obito no estado: <span>${allDataOfCountry[index].Mortos}</span></p>
+            <p>País: <span>${allDataOfCountry[index].Pais}</span></p>
+            <p>Casos confirmados no estado: <span>${allDataOfCountry[index].Confirmados}</span></p>
+            <p>Óbitos no estado: <span>${allDataOfCountry[index].Mortos}</span></p>
         `
           searchResponseElement.appendChild(div)
         }
@@ -95,15 +95,15 @@ export function compareCountries(
       .then(data => {
         searchResponseElement.innerHTML = `
         <h4>Paises escolhidos: <span>${fistCountry} X ${secondCountry}</span> </h4>
-        <h4>Diferenca entre a taxa de mortalidade: <span>${(
+        <h4>Diferença  entre a taxa de mortalidade: <span>${(
           data.percentageDeathFistCountry - data.percentageDeathSecondCountry
         ).toFixed(2)}%</span></h4>
           <div class="infoCard">
             <p>Pais: <span>${fistCountry}</span></p>
-            <p>Numero de confirmados com covid-19: <span>${
+            <p>Número  de confirmados com covid-19: <span>${
               data.confirmedFistCountry
             }</span></p>
-            <p>Numero de obitos devido ao covid-19: <span>${
+            <p>Número  de obitos devido ao covid-19: <span>${
               data.deadFistCountry
             }</span></p>
             <p>Taxa de mortalidade: <span>${data.percentageDeathFistCountry.toFixed(
@@ -111,11 +111,11 @@ export function compareCountries(
             )}%</span></p>
           </div>
           <div class="infoCard">
-            <p>Pais: <span>${secondCountry}</span></p>
-            <p>Numero de confirmados com covid-19: <span>${
+            <p>País: <span>${secondCountry}</span></p>
+            <p>Número de confirmados com covid-19: <span>${
               data.confirmedSecondCountry
             }</span></p>
-            <p>Numero de obitos devido ao covid-19: <span>${
+            <p>Número de obitos devido ao covid-19: <span>${
               data.deadSecondCountry
             }</span></p>
             <p>Taxa de mortalidade: <span>${data.percentageDeathSecondCountry.toFixed(
@@ -135,17 +135,15 @@ export function compareCountries(
 export function updateFooterInf(url, hourElement, dateElement, countryElement) {
   try {
     fetch(url)
-      .then(response => {
-        if (response == undefined) {
-          console.log('Nunca pais pesquisado no momento')
-        } else {
-          response.json()
-        }
-      })
+      .then(response => response.json())
       .then(data => {
-        hourElement.innerHTML = data.hour
-        dateElement.innerHTML = data.updated_at
-        countryElement.innerHTML = data.name
+        if (typeof data !== 'object') {
+          return console.log('nenhuma requisicao feita ainda')
+        } else {
+          hourElement.innerHTML = data.hour
+          dateElement.innerHTML = data.updated_at
+          countryElement.innerHTML = data.name
+        }
       })
   } catch (error) {
     console.log(error)
