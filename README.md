@@ -36,7 +36,9 @@ As seguintes tecnologias foram utilizadas para desenvolver este site | The follo
  (Nome do host, nome do banco, username, password) ``` 
 - nome do host = localhost 
 - nome do banco que voce criou 
-- username e password, sao informacoes que voce encontra na secao `Authentication Type`, dentro do arquivo config.inc.php, dentro da pasta phpmyadmin, dentro de lampp 
+- username e password, sao informacoes que voce encontra na secao `Authentication Type`, dentro do arquivo config.inc.php, dentro da pasta phpmyadmin, dentro de lampp
+7. Apos isso executar como SUPER-USER/ADMINISTRADOR o arquivo manager-linux-x64.run e iniciar todos os servicos
+8. Acessar o endereco: `http://localhost/selecao/` pelo seu navegador.
 
 
 
