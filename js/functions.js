@@ -135,7 +135,13 @@ export function compareCountries(
 export function updateFooterInf(url, hourElement, dateElement, countryElement) {
   try {
     fetch(url)
-      .then(response => response.json())
+      .then(response => {
+        if (response == undefined) {
+          console.log('Nunca pais pesquisado no momento')
+        } else {
+          response.json()
+        }
+      })
       .then(data => {
         hourElement.innerHTML = data.hour
         dateElement.innerHTML = data.updated_at
